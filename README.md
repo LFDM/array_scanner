@@ -1,6 +1,8 @@
 # ArrayScanner
 
-Class for traversing an array, remembering the position of a pointer and recent scan operations.
+Class for traversing an array, remembering the position of a pointer and
+recent scan operations, very much like Ruby's standard library
+StringScanner.
 
 ## Installation
 
