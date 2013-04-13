@@ -25,7 +25,7 @@ describe ArrayScanner do
   end
 
   describe "#eoa" do
-    it "should return last valid position" do
+    it "should return last valid position, i.d. end of array" do
       @a.eoa.should be 4
     end
   end
