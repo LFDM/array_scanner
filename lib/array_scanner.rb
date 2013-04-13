@@ -6,7 +6,7 @@ class ArrayScanner
   alias :pos     :position
   alias :pointer :position
 
-  def initialize arr, history_size = 10
+  def initialize(arr, history_size = 10)
     raise TypeError.new("Argument is not an Array.")      unless arr.is_a?(Array)
     raise TypeError.new("History size is not a Fixnum.")  unless history_size.is_a?(Fixnum)
 
@@ -38,7 +38,7 @@ class ArrayScanner
   alias :points_at :current_element
   alias :current   :current_element
 
-  def position= (new)
+  def position=(new)
     raise TypeError.new("New position not a Fixnum.") unless new.is_a? Fixnum
     raise ArgumentError.new("New position #{new} outside of range 0..#{@arr.size - 1}.") if new >= size || new < 0
 
@@ -57,24 +57,24 @@ class ArrayScanner
     @pos_hist.recent
   end
 
-  def last_positions n = nil
+  def last_positions(n = nil)
     n ? @pos_hist.recent(n) : @pos_hist.stack
   end
 
-  def unscan steps = 1
+  def unscan(steps = 1)
     return nil if last_positions.empty?
     self.position = last_positions[steps - 1] || last_positions.last
   end
 
-  def last_result valid = false
+  def last_result(valid = false)
     valid ? @res_hist.stack.find { |x| x } : @res_hist.recent
   end
 
-  def last_results n = nil
+  def last_results(n = nil)
     n ? @res_hist.recent(n) : @res_hist.stack
   end
 
-  def forward fixnum
+  def forward(fixnum)
     new = @position + fixnum
     self.position = (new > eoa ? eoa : new)
   end
@@ -88,7 +88,7 @@ class ArrayScanner
     end
   end
 
-  def rewind fixnum
+  def rewind(fixnum)
     new = @position - fixnum
     self.position = (new < 0 ? 0 : new)
   end
@@ -128,11 +128,7 @@ class ArrayScanner
     eoa - @position
   end
 
-  def << elem
-    @arr << elem
-  end
-
-  def scan forward = true
+  def scan(forward = true)
     res = @arr[@position]
 
     if block_given?
@@ -148,7 +144,7 @@ class ArrayScanner
     end
   end
 
-  def scan_until include_true_element = false
+  def scan_until(include_true_element = false)
     if block_given?
       e = rest.find { |el| yield(el) }
       if e
@@ -165,7 +161,7 @@ class ArrayScanner
     end
   end
 
-  def peek n = nil
+  def peek(n = nil)
     n ? rest.take(n) : rest.first
   end
 
@@ -178,7 +174,7 @@ class ArrayScanner
     end
   end
 
-  def look_behind n = nil
+  def look_behind(n = nil)
     n ? scanned.reverse.take(n) : scanned.last
   end
 
