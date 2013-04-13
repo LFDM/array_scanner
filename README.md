@@ -1,6 +1,6 @@
 # ArrayScanner
 
-TODO: Write a gem description
+Class for traversing an array, remembering the position of a pointer and recent scan operations.
 
 ## Installation
 
