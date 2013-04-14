@@ -20,9 +20,8 @@ Or install it yourself as:
 
 ## Example Usage
 
-    TODO: Write usage instructions here
-
     ArrayScanner.new([:a,      :b,      :c,      :d,      :e,      :f,      :g])
+
                  inspect => "Pointer at 0/6. Current element: :a"
 
                  forward(2) => 2
@@ -47,7 +46,7 @@ Or install it yourself as:
                                                   o-------2-------> *
                  
                  unscan => 3
-                                                  \* <-------2-------o                  
+                                                  * <-------2-------o                  
 
                  scan_until(true) { |el| el == :f } => [:d, :e, :f]
                                                   o------------3-----------> *
@@ -56,7 +55,7 @@ Or install it yourself as:
                                                                              *
 
                  rewind_to { |el| el == :b } => :b
-                               \* <-------------------5--------------------- *
+                               * <--------------------5--------------------- *
 
                  surroundings => [:a, :c]
                                *
