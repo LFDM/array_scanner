@@ -349,6 +349,11 @@ describe ArrayScanner do
       @a.position.should be 3
     end
 
+    it "should rest pointer at eoa when true argument is given and the truthy result is at eoa." do
+      @a.scan_until(true) { |el| el == 5 }.should == [1,2,3,4,5]
+      @a.position.should == @a.eoa
+    end
+
     it "raises ArgumentError without block" do
       expect { @a.look_behind_until }.to raise_error(ArgumentError)
     end

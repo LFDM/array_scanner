@@ -145,7 +145,7 @@ class ArrayScanner
         i  = @arr.index(e)
         i += 1 if include_true_element
 
-        self.position = i
+        self.position = (i > eoa ? eoa : i)
         rr(@arr[last_position...i])
       else
         rr(false)
