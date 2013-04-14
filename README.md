@@ -18,11 +18,57 @@ Or install it yourself as:
 
     $ gem install array_scanner
 
-## Usage
+## Example Usage
 
     TODO: Write usage instructions here
 
-Cf. spec files for detailed documentation.
+    ArrayScanner.new([:a,      :b,      :c,      :d,      :e,      :f,      :g])
+                 inspect => "Pointer at 0/6. Current element: :a"
+
+                 forward(2) => 2
+                       o-------2-------> *
+
+                 current_element => :c
+                                         *
+                 
+                 scan { |el| el == :c } => :c
+                                         o---1--> *
+
+                 position => 3
+                                                  *
+
+                 rest => [:d, :e, :f, :g]
+                                                  *
+
+                 rest_size => 4
+                                                  *
+
+                 scan_until { |el| el == :f } => [:d, :e]
+                                                  o-------2-------> *
+                 
+                 unscan => 3
+                                                  \* <-------2-------o                  
+
+                 scan_until(true) { |el| el == :f } => [:d, :e, :f]
+                                                  o------------3-----------> *
+
+                 eoa? => true
+                                                                             *
+
+                 rewind_to { |el| el == :b } => :b
+                               \* <-------------------5--------------------- *
+
+                 surroundings => [:a, :c]
+                               *
+
+                 last_positions => [6, 3, 5, 3, 2, 0]
+                               *
+
+                 last_results => [[:d, :e, :f], [:d, :e], :c]
+                               *
+                                        
+                 Check tests for more behaviour.
+
 
 ## Contributing
 

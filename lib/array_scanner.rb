@@ -125,7 +125,7 @@ class ArrayScanner
   end
 
   def rest_size
-    eoa - @position
+    size - @position
   end
 
   def scan(forward = true)
@@ -219,6 +219,6 @@ class ArrayScanner
   end
 
   def inspect
-    "Pointer at #{@position}/#{eoa}. Current element: #{current_element}"
+    "Pointer at #{@position}/#{eoa}. Current element: #{":" if current.is_a?(Symbol)}#{current}"
   end
 end

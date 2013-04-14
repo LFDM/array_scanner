@@ -291,7 +291,7 @@ describe ArrayScanner do
   describe "#rest_size" do
     it "should return number of remaining elements" do
       @a.position = 1
-      @a.rest_size.should be 3
+      @a.rest_size.should be 4
     end
   end
 
