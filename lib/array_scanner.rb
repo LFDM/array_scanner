@@ -23,12 +23,12 @@ class ArrayScanner
 
   alias :length :size
 
-  def eoa?
-    @position == eoa
-  end
-
   def eoa
     size - 1
+  end
+
+  def eoa?
+    @position == eoa
   end
 
   def current_element
@@ -131,13 +131,8 @@ class ArrayScanner
   def scan(forward = true)
     res = @arr[@position]
 
-    if block_given?
-      if yield(res)
-        forward(1) if forward &! eoa?
-        rr(res)
-      else
-        rr(false)
-      end
+    if block_given? and not yield(res)
+      rr(false)
     else
       forward(1) if forward &! eoa?
       rr(res)
@@ -146,8 +141,7 @@ class ArrayScanner
 
   def scan_until(include_true_element = false)
     if block_given?
-      e = rest.find { |el| yield(el) }
-      if e
+      if e = rest.find { |el| yield(el) }
         i  = @arr.index(e)
         i += 1 if include_true_element
 
