@@ -40,7 +40,7 @@ class ArrayScanner
 
   def position=(new)
     raise TypeError.new("New position not a Fixnum.") unless new.is_a? Fixnum
-    raise ArgumentError.new("New position #{new} outside of range 0..#{@arr.size - 1}.") if new >= size || new < 0
+    raise ArgumentError.new("New position #{new} outside of range 0..#{eoa}.") unless new.between?(0, eoa)
 
     @pos_hist.push(@position)
     @position = new
