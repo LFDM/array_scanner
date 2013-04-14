@@ -284,7 +284,7 @@ describe ArrayScanner do
   describe "#rest" do
     it "should return remaining elements" do
       @a.position = 1
-      @a.rest.should == [3,4,5]
+      @a.rest.should == [2,3,4,5]
     end
   end
 
@@ -357,19 +357,19 @@ describe ArrayScanner do
   describe "#peek" do
     it "should return next element without argument" do
       @a.position = 1
-      @a.peek.should == 3
+      @a.peek.should == 2
     end
 
     it "should array of next elements by argument number" do
-      @a.peek(1).should == [2]
-      @a.peek(2).should == [2,3]
+      @a.peek(1).should == [1]
+      @a.peek(2).should == [1,2]
     end
   end
 
   describe "#peek_until" do
     it "should return array of next elements between current position and the element for which the block is true" do
       @a.position = 1
-      @a.peek_until { |el| el == 5 }.should == [3,4]
+      @a.peek_until { |el| el == 5 }.should == [2,3,4]
     end
 
     it "should return empty array if block is false" do

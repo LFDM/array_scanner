@@ -50,7 +50,7 @@ class ArrayScanner
   alias :pointer= :position=
 
   def surroundings
-    [scanned.last, rest.first]
+    [scanned.last, rest[1]]
   end
 
   def last_position
@@ -121,7 +121,7 @@ class ArrayScanner
   end
 
   def rest
-    @arr[(@position + 1)..-1]
+    @arr[@position..-1]
   end
 
   def rest_size
