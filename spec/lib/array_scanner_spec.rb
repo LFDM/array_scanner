@@ -185,6 +185,19 @@ describe ArrayScanner do
     end
   end
 
+  describe "#last_results" do
+    it "returns an array of latest scan results (latest is first element)" do
+      as.scan and as.scan
+      as.last_results.should == [2, 1]
+    end
+
+    it "returns n last results when called with argument n" do
+      as.scan and as.scan
+      as.last_results(1).should == [2]
+    end
+
+  end
+
   describe "#forward" do
     it "should forward pointer by argument" do
       as.forward(2)
@@ -209,7 +222,7 @@ describe ArrayScanner do
     end
 
     it "raises ArgumentError without block" do
-      expect { as.look_behind_until }.to raise_error(ArgumentError)
+      expect { as.forward_to }.to raise_error(ArgumentError)
     end
   end
 
@@ -241,7 +254,7 @@ describe ArrayScanner do
     end
 
     it "raises ArgumentError without block" do
-      expect { as.look_behind_until }.to raise_error(ArgumentError)
+      expect { as.rewind_to }.to raise_error(ArgumentError)
     end
   end
 
@@ -354,7 +367,7 @@ describe ArrayScanner do
     end
 
     it "raises ArgumentError without block" do
-      expect { as.look_behind_until }.to raise_error(ArgumentError)
+      expect { as.scan_until }.to raise_error(ArgumentError)
     end
   end
 
@@ -436,6 +449,10 @@ describe ArrayScanner do
       as.position = 3
       as.find { |x| x == 0 }.should be_nil
     end
+
+    it "raises ArgumentError without block" do
+      expect { as.find }.to raise_error(ArgumentError)
+    end
   end
 
   describe "#next" do
@@ -449,6 +466,10 @@ describe ArrayScanner do
     it "should return previous element in front of pointer for true block" do
       as.position = 3
       as.previous { |x| x == 2 }.should be 2
+    end
+
+    it "raises ArgumentError without block" do
+      expect { as.previous }.to raise_error(ArgumentError)
     end
   end
 
