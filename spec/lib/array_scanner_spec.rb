@@ -1,4 +1,5 @@
-require_relative "../../lib/array_scanner"
+require 'spec_helper'
+require 'array_scanner'
 
 describe ArrayScanner do
   describe "#initialize" do

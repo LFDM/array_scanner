@@ -1,4 +1,5 @@
-require_relative "../../lib/hist"
+require 'spec_helper'
+require 'hist'
 
 describe Hist do
   describe "#initialize" do
