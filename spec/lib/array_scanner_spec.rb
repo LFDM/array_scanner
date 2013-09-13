@@ -394,7 +394,7 @@ describe ArrayScanner do
     end
 
     it "raises ArgumentError without block" do
-      expect { as.look_behind_until }.to raise_error(ArgumentError)
+      expect { as.peek_until }.to raise_error(ArgumentError)
     end
   end
 

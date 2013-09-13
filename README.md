@@ -24,6 +24,8 @@ Or install it yourself as:
 
 ## Example Usage
 
+Updated soon!
+
     ArrayScanner.new([:a,      :b,      :c,      :d,      :e,      :f,      :g])
 
                  inspect => "Pointer at 0/6. Current element: :a"
