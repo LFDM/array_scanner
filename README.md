@@ -1,4 +1,8 @@
 # ArrayScanner
+[![Build Status](https://travis-ci.org/LFDM/array_scanner.png)](https://travis-ci.org/LFDM/array_scanner)
+[![Coverage Status](https://coveralls.io/repos/LFDM/array_scanner/badge.png)](https://coveralls.io/r/LFDM/array_scanner)
+[![Dependency Status](https://gemnasium.com/LFDM/array_scanner.png)](https://gemnasium.com/LFDM/array_scanner)
+
 
 Class for traversing an array, remembering the position of a pointer and
 recent scan operations, very much like Ruby's standard library
